@@ -1312,6 +1312,92 @@ p  { margin-block: 0 var(--space-4); }
   #faq { padding-block-start: var(--space-4); }
 }
 
+/* ============================================================
+   Phase 8 — Parent Portal
+   ============================================================ */
+#parent-communication { background: var(--bg-body); }
+.pc { inline-size: 100%; max-inline-size: var(--content-wide); margin-inline: auto; }
+.pc__head { text-align: center; margin-block-end: var(--space-5); }
+.pc__head .section-title, .pc__head .section-subtitle { text-align: center; }
+.pc__demo-note { font-size: var(--fs-sm); color: var(--text-muted); margin-block: var(--space-2); }
+.pc__demo-note .badge { margin-inline-end: var(--space-2); }
+.pc__muted { color: var(--text-muted); font-size: var(--fs-xs); }
+
+/* Gate */
+.pc__gate { display: flex; justify-content: center; }
+.pc__gate-card { text-align: center; max-inline-size: 420px; display: flex; flex-direction: column; align-items: center; gap: var(--space-2); }
+.pc__gate-card h3 { margin: var(--space-2) 0 0; }
+.pc__gate-card .btn { margin-block-start: var(--space-2); }
+
+/* Dashboard */
+.pc__dash-top {
+  display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between;
+  gap: var(--space-4); margin-block-end: var(--space-5);
+}
+.pc__welcome { font-size: var(--fs-xl); font-weight: var(--fw-heavy); margin: 0; }
+.pc__dash-actions { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
+.pc__child { inline-size: auto; min-inline-size: 160px; }
+
+.pc__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-block-end: var(--space-6); }
+.pc-card {
+  display: flex; flex-direction: column; gap: var(--space-1);
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: var(--space-5);
+}
+.pc-card--wide { grid-column: 1 / -1; }
+.pc-card__title { font-size: var(--fs-md); font-weight: var(--fw-bold); margin: var(--space-2) 0 0; }
+.pc-card__body { font-size: var(--fs-sm); color: var(--text); margin: 0; line-height: var(--lh-base); }
+.pc__link { font-weight: var(--fw-bold); font-size: var(--fs-sm); color: var(--color-primary); text-decoration: none; margin-block-start: var(--space-2); }
+.pc__link:hover { color: var(--color-primary-hover); text-decoration: underline; }
+
+/* homework progress bar */
+.pc__bar { display: block; block-size: 10px; background: var(--bg-muted); border-radius: var(--radius-pill); overflow: hidden; margin-block: var(--space-2); }
+.pc__bar-fill { display: block; block-size: 100%; background: var(--color-success); border-radius: var(--radius-pill); }
+
+/* resources */
+.pc__res-list { list-style: none; margin: var(--space-2) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.pc__res-item { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-2) var(--space-3); background: var(--surface-alt); border: 1px solid var(--border); border-radius: var(--radius-md); }
+.pc__res-info { display: flex; flex-direction: column; }
+.pc__res-title { font-weight: var(--fw-bold); font-size: var(--fs-sm); }
+.pc__res-type { font-size: var(--fs-xs); color: var(--text-muted); }
+.pc__res-dl { font-family: inherit; font-weight: var(--fw-bold); font-size: var(--fs-sm); color: var(--color-primary); background: var(--color-primary-soft); border: 0; border-radius: var(--radius-pill); padding: var(--space-1) var(--space-4); cursor: pointer; }
+.pc__res-dl:hover { background: var(--pastel-blue); color: var(--color-primary-hover); }
+
+/* Ask the Teacher */
+.pc__ask { }
+.pc__ask-title { display: flex; align-items: center; gap: var(--space-2); font-size: var(--fs-xl); margin: 0; }
+.pc__ask-sub { color: var(--text-muted); font-size: var(--fs-sm); margin-block: var(--space-1) var(--space-4); }
+.pc__ask-form { display: grid; gap: var(--space-4); margin-block-end: var(--space-5); }
+.pc__field { display: flex; flex-direction: column; }
+.pc__form-row { display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap; }
+.pc__form-status { font-size: var(--fs-sm); margin: 0; }
+.pc__form-status.is-ok { color: var(--color-success); }
+.pc__form-status.is-error { color: var(--color-danger); }
+.pc__conv-title { font-size: var(--fs-md); margin-block: var(--space-2); }
+.pc__conv-list { display: flex; flex-direction: column; gap: var(--space-3); }
+.conv { background: var(--surface-alt); border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-4); }
+.conv__top { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); margin-block-end: var(--space-2); }
+.conv__cat { font-size: var(--fs-xs); font-weight: var(--fw-bold); color: var(--text); background: var(--bg-muted); padding: 2px var(--space-3); border-radius: var(--radius-pill); }
+.conv__status { font-size: var(--fs-xs); font-weight: var(--fw-heavy); text-transform: uppercase; letter-spacing: 0.03em; padding: 2px var(--space-3); border-radius: var(--radius-pill); }
+.conv__status--answered { background: var(--pastel-mint); color: #22603f; }
+.conv__status--pending { background: var(--pastel-yellow); color: #7a5410; }
+.conv__msg { margin: 0 0 var(--space-2); font-size: var(--fs-sm); }
+.conv__reply { margin: 0; font-size: var(--fs-sm); background: var(--surface); border-inline-start: 3px solid var(--color-success); border-radius: var(--radius-sm); padding: var(--space-2) var(--space-3); }
+.conv__waiting { margin: 0; font-size: var(--fs-sm); color: var(--text-muted); }
+
+/* login modal password row */
+.modal__panel--form { max-inline-size: 420px; }
+.pc__pw { position: relative; display: flex; align-items: center; }
+.pc__pw .input { padding-inline-end: 64px; }
+.pc__pw-toggle { position: absolute; inset-inline-end: var(--space-2); font-family: inherit; font-weight: var(--fw-bold); font-size: var(--fs-sm); color: var(--color-primary); background: transparent; border: 0; cursor: pointer; padding: var(--space-1) var(--space-2); }
+.pc__login-row { display: flex; justify-content: flex-end; margin-block: var(--space-2) var(--space-3); }
+.pc__login-btn { inline-size: 100%; }
+.pc__login-create { text-align: center; font-size: var(--fs-sm); color: var(--text-muted); margin-block-start: var(--space-3); }
+
+/* Responsive */
+@media (max-width: 900px) { .pc__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .pc__grid { grid-template-columns: 1fr; } }
+
 /* ---------- 15. Motion preferences ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

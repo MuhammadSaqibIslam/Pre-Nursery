@@ -437,3 +437,45 @@ HTML/CSS/vanilla JS; reuse components/tokens; no duplicate sections; don't chang
 Five weekdays display; responsive; current-day indicator; FAQ expand/collapse; keyboard + ARIA; empty states; existing intact; no JS/CSS errors.
 
 Complete Phase 7 only. Do not proceed to Phase 8 automatically. Summarize files, features, tests, remaining issues. Wait for approval.
+
+---
+
+# Prompt 11
+
+# UI Fix: Reduce Excessive Vertical Spacing
+
+Weekly Learning Plan and Parent FAQ: reduce excessive vertical whitespace (weekly cards end too far above next section; large empty area between weekly cards and FAQ heading; page feels stretched). Reduce unnecessary bottom padding/margin after weekly cards and top padding/margin before FAQ heading; keep card design/colors/typography; comfortable internal spacing. Audit CSS for excessive padding-block/margins, fixed min-height, spacer elements, large grid/flex gaps, duplicate global section margins. Fix the real source (not random negative margins). Consistent section spacing via tokens; ~56–80px desktop, ~32–48px mobile between the two sections. Responsive at all sizes; no horizontal overflow; don't cramp card interiors; don't modify unrelated sections.
+(Root cause found: three EMPTY placeholder sections between weekly-plan and faq each had section padding → collapsed padding on `main > section:empty`.)
+
+Complete only this spacing fix. Do not proceed to the next development phase.
+
+---
+
+# Prompt 12
+
+# Phase 8: Parent Portal and Private Communication UI
+
+Implement ONLY the Parent Portal interface + private parent-teacher communication UI. Preserve all existing sections/functionality.
+
+## 1. Parent Login
+Polished login modal (design-system consistent): parent email, password, show/hide password, Sign In, Forgot Password link, Create Account link/placeholder, clear validation/errors. Accessible labels; desktop+mobile. No fake auth / no "securely logged in" claim. Mark auth actions as DEMO placeholders until real backend (Phase 9).
+
+## 2. Parent Dashboard
+Separate parent dashboard (eventually behind secure auth): welcome, child profile summary, today's classwork+homework, attendance summary, upcoming activities, latest announcements, homework completion status, learning resources, teacher communication entry point. Clearly-labelled SAMPLE data; no real child info. Prepare UI for child selector if multiple children; don't implement real account-child linking.
+
+## 3. Private Ask the Teacher
+Private comms: question form, category, message field, submit, previous conversations, Pending/Answered statuses, teacher reply display. Categories: Homework, Classwork, Attendance, Child's Progress, Activities, Other. Validate required fields; preserve original submitted message; success/error/empty states; realistic sample conversations. Don't show conversations publicly / across parents. Don't claim messages delivered to teacher until backend exists.
+
+## 4. Parent Learning Resources
+Dashboard resource area: downloadable worksheets, printable activities, learning guides, classroom prep. Safe sample resources or clearly-marked placeholders. Download links only appear when a valid resource exists.
+
+## 5. Design/Nav
+Reuse design system; dashboard consistent with public site; clear simple nav; responsive cards, readable type, accessible controls; mobile forms; don't modify approved public navbar/hero/classwork/gallery/weekly/FAQ unnecessarily.
+
+## 6. Technical
+HTML/CSS/vanilla JS; no framework; no real auth/db/secure child-linking this phase; don't store sensitive child info in localStorage; keep demo data separate from real account data; structure to connect to Supabase auth+db in Phase 9.
+
+## 7. Testing
+Login validation; password toggle; dashboard renders; sample child/homework clearly demo; question form validation; conversation statuses + empty states; resource links only when valid; responsive; existing intact; no misleading auth/privacy claims.
+
+Complete Phase 8 only. Do not proceed to Phase 9 automatically. Summarize files, functionality, tests, remaining limitations. Wait for approval.

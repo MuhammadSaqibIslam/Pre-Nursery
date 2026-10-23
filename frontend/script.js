@@ -33,6 +33,9 @@ document.addEventListener("DOMContentLoaded", function () {
   initWeeklyPlan();
   initFaq();
 
+  // ---- Phase 8: Parent Portal ----
+  initParentPortal();
+
   var toggle = document.getElementById("nav-toggle");
   var menu = document.getElementById("nav-menu");
 
@@ -850,4 +853,251 @@ function initFaq() {
     btn.setAttribute("aria-expanded", open ? "false" : "true");
     panel.hidden = open;
   });
+}
+
+/* ===========================================================
+   Phase 8 — Parent Portal (front-end demo, no real auth/backend)
+   =========================================================== */
+function initParentPortal() {
+  "use strict";
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+  function qs(id) { return document.getElementById(id); }
+
+  var modal = qs("login-modal");
+  var section = qs("parent-communication");
+  var dash = qs("pc-dashboard");
+  if (!modal || !section || !dash) return;
+
+  /* ---------- Login modal ---------- */
+  var lastFocused = null;
+  function openLogin() {
+    lastFocused = document.activeElement;
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+    var email = qs("login-email"); if (email) email.focus();
+    document.addEventListener("keydown", onLoginKey, true);
+  }
+  function closeLogin() {
+    if (modal.hidden) return;
+    modal.hidden = true;
+    document.body.style.overflow = "";
+    document.removeEventListener("keydown", onLoginKey, true);
+    if (lastFocused) lastFocused.focus();
+  }
+  function onLoginKey(e) { if (e.key === "Escape") { e.preventDefault(); closeLogin(); } }
+
+  // navbar Parent Login is the single entry point to the login modal
+  var navLogin = document.querySelector(".nav__login");
+  if (navLogin) navLogin.addEventListener("click", function (e) { e.preventDefault(); openLogin(); });
+  modal.addEventListener("click", function (e) { if (e.target.closest("[data-close]")) closeLogin(); });
+
+  // password show/hide
+  var pwToggle = qs("login-pw-toggle");
+  var pwInput = qs("login-password");
+  if (pwToggle && pwInput) {
+    pwToggle.addEventListener("click", function () {
+      var show = pwInput.type === "password";
+      pwInput.type = show ? "text" : "password";
+      pwToggle.textContent = show ? "Hide" : "Show";
+      pwToggle.setAttribute("aria-pressed", show ? "true" : "false");
+      pwToggle.setAttribute("aria-label", show ? "Hide password" : "Show password");
+    });
+  }
+
+  // login validation + demo sign-in
+  var loginForm = qs("login-form");
+  function setErr(field, errId, bad) {
+    var e = qs(errId);
+    if (e) e.hidden = !bad;
+    var f = qs(field);
+    if (f) f.setAttribute("aria-invalid", bad ? "true" : "false");
+  }
+  if (loginForm) {
+    loginForm.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var email = qs("login-email").value.trim();
+      var pw = qs("login-password").value;
+      var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      var pwOk = pw.length >= 6;
+      setErr("login-email", "login-email-err", !emailOk);
+      setErr("login-password", "login-password-err", !pwOk);
+      var status = qs("login-status");
+      if (!emailOk || !pwOk) {
+        if (status) { status.textContent = "Please fix the highlighted fields."; status.className = "pc__form-status is-error"; }
+        return;
+      }
+      if (status) { status.textContent = "Demo sign-in — opening your sample dashboard."; status.className = "pc__form-status is-ok"; }
+      signIn(email);
+    });
+  }
+
+  function signIn(email) {
+    closeLogin();
+    section.hidden = false;
+    var w = qs("pc-welcome");
+    if (w) w.textContent = "Welcome back, " + esc(email.split("@")[0]) + "! (Demo)";
+    renderDashboard();
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  var signout = qs("pc-signout");
+  if (signout) signout.addEventListener("click", function () {
+    section.hidden = true;
+    document.body.style.overflow = "";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  /* ---------- Dashboard (sample data) ---------- */
+  function renderDashboard() {
+    var grid = qs("pc-grid");
+    if (!grid) return;
+    var cards = [
+      { icon: "🧒", accent: "lavender", title: "Child Profile",
+        body: "<strong>Class:</strong> Pre-Nursery<br><strong>Age group:</strong> 3–4 years<br><strong>Teacher:</strong> Your class teacher" },
+      { icon: "📘", accent: "blue", title: "Today's Classwork & Homework",
+        body: "Letter A tracing &amp; counting 1–5.<br>Homework: trace A three times at home.",
+        link: { label: "Open today's posts", href: "#classwork-homework" } },
+      { icon: "🗓️", accent: "mint", title: "Attendance Summary",
+        body: "<strong>Present:</strong> 18 of 20 days<br><span class=\"pc__muted\">Sample figure for preview.</span>" },
+      { icon: "🎨", accent: "peach", title: "Upcoming Activities",
+        body: "Paper butterfly craft<br>Sorting shapes &amp; colours",
+        link: { label: "See activities", href: "#activities-gallery" } },
+      { icon: "📣", accent: "yellow", title: "Latest Announcements",
+        body: "Please bring art supplies<br>Special activity day coming up",
+        link: { label: "See announcements", href: "#announcements" } },
+      { icon: "✅", accent: "mint", title: "Homework Completion",
+        body: homeworkBar(3, 4) + "<span class=\"pc__muted\">3 of 4 done this week (sample).</span>" }
+    ];
+    grid.innerHTML = cards.map(function (c) {
+      return (
+        '<article class="pc-card">' +
+          '<span class="icon-box icon-box--' + c.accent + '" aria-hidden="true">' + c.icon + '</span>' +
+          '<h4 class="pc-card__title">' + esc(c.title) + '</h4>' +
+          '<p class="pc-card__body">' + c.body + '</p>' +
+          (c.link ? '<a class="pc__link" href="' + c.link.href + '">' + esc(c.link.label) + ' →</a>' : '') +
+        '</article>'
+      );
+    }).join("") + resourcesCard();
+
+    wireResources();
+  }
+
+  function homeworkBar(done, total) {
+    var pct = Math.round((done / total) * 100);
+    return '<span class="pc__bar"><span class="pc__bar-fill" style="inline-size:' + pct + '%"></span></span>';
+  }
+
+  /* ---------- Learning resources (download only when valid) ---------- */
+  var RESOURCES = [
+    { title: "Letter A Tracing Worksheet", type: "Worksheet", valid: true,
+      content: "Little Learners — Letter A Tracing\n\nTrace the letter A:\nA A A A A\n\nDraw something that starts with A (like an apple).\n" },
+    { title: "Counting 1–5 Practice Sheet", type: "Printable", valid: true,
+      content: "Little Learners — Counting 1 to 5\n\nCount and write:\n1  2  3  4  5\n\nColour 3 circles:  O O O O O\n" },
+    { title: "Parent Guide: Learning at Home", type: "Guide", valid: false },
+    { title: "Classroom Preparation Checklist", type: "Checklist", valid: false }
+  ];
+  function resourcesCard() {
+    var rows = RESOURCES.map(function (r, i) {
+      var right = r.valid
+        ? '<button type="button" class="pc__res-dl" data-res="' + i + '">Download</button>'
+        : '<span class="badge">Coming soon</span>';
+      return (
+        '<li class="pc__res-item">' +
+          '<span class="pc__res-info"><span class="pc__res-title">' + esc(r.title) + '</span>' +
+          '<span class="pc__res-type">' + esc(r.type) + '</span></span>' + right +
+        '</li>'
+      );
+    }).join("");
+    return (
+      '<article class="pc-card pc-card--wide">' +
+        '<span class="icon-box icon-box--peach" aria-hidden="true">📥</span>' +
+        '<h4 class="pc-card__title">Learning Resources</h4>' +
+        '<ul class="pc__res-list">' + rows + '</ul>' +
+      '</article>'
+    );
+  }
+  function wireResources() {
+    var grid = qs("pc-grid");
+    if (!grid) return;
+    grid.querySelectorAll(".pc__res-dl").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var r = RESOURCES[+btn.getAttribute("data-res")];
+        if (!r || !r.valid || !r.content) return;
+        var blob = new Blob([r.content], { type: "text/plain" });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = r.title.replace(/[^a-z0-9]+/gi, "-").toLowerCase() + ".txt";
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      });
+    });
+  }
+
+  /* ---------- Private Ask the Teacher ---------- */
+  // In-memory only (no localStorage) — each parent sees only their own.
+  var conversations = [
+    { id: "s1", category: "Homework", message: "Is it okay if we practise letter A with chalk outside?",
+      status: "answered", reply: "Absolutely! Chalk is a wonderful way to practise big letter shapes. Have fun!" },
+    { id: "s2", category: "Activities", message: "What should we bring for the butterfly craft day?",
+      status: "pending", reply: null }
+  ];
+
+  function renderConversations() {
+    var list = qs("ask-list");
+    if (!list) return;
+    if (!conversations.length) {
+      list.innerHTML =
+        '<div class="empty-state"><span class="empty-state__icon" aria-hidden="true">💬</span>' +
+        '<p class="empty-state__title">No messages yet</p>' +
+        '<p>Your questions to the teacher will appear here.</p></div>';
+      return;
+    }
+    list.innerHTML = conversations.map(function (c) {
+      var answered = c.status === "answered";
+      return (
+        '<article class="conv">' +
+          '<div class="conv__top">' +
+            '<span class="conv__cat">' + esc(c.category) + '</span>' +
+            '<span class="conv__status conv__status--' + c.status + '">' + (answered ? "Answered" : "Pending") + '</span>' +
+          '</div>' +
+          '<p class="conv__msg"><strong>You:</strong> ' + esc(c.message) + '</p>' +
+          (answered
+            ? '<p class="conv__reply"><strong>Teacher:</strong> ' + esc(c.reply) + '</p>'
+            : '<p class="conv__waiting">Waiting for a reply… <span class="pc__muted">(demo)</span></p>') +
+        '</article>'
+      );
+    }).join("");
+  }
+
+  var askForm = qs("ask-form");
+  if (askForm) {
+    askForm.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var catEl = qs("ask-category"), msgEl = qs("ask-message");
+      var cat = catEl.value, msg = msgEl.value.trim();
+      var catBad = !cat, msgBad = msg.length < 2;
+      qs("ask-category-err").hidden = !catBad;
+      qs("ask-message-err").hidden = !msgBad;
+      catEl.setAttribute("aria-invalid", catBad ? "true" : "false");
+      msgEl.setAttribute("aria-invalid", msgBad ? "true" : "false");
+      var status = qs("ask-status");
+      if (catBad || msgBad) {
+        status.textContent = "Please complete the required fields.";
+        status.className = "pc__form-status is-error";
+        return;
+      }
+      // preserve the original message verbatim; never auto-edit it
+      conversations.unshift({ id: "u" + Date.now(), category: cat, message: msg, status: "pending", reply: null });
+      renderConversations();
+      askForm.reset();
+      status.textContent = "Saved to your conversations (demo — not sent to a real teacher yet).";
+      status.className = "pc__form-status is-ok";
+    });
+  }
+
+  renderConversations();
 }

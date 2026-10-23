@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap">
-  <link rel="stylesheet" href="style.css?v=21">
+  <link rel="stylesheet" href="style.css?v=23">
 </head>
 <body>
   <!-- Skip link for accessibility -->
@@ -383,8 +383,97 @@
     <!-- Learning resources -->
     <section id="learning-resources" aria-label="Learning resources"></section>
 
-    <!-- Parent communication -->
-    <section id="parent-communication" aria-label="Parent communication"></section>
+    <!-- Private parent dashboard (hidden until demo sign-in; no public landing section) -->
+    <section id="parent-communication" aria-label="Parent dashboard" hidden>
+      <div class="pc">
+        <div id="pc-dashboard" class="pc__dash">
+          <div class="pc__dash-top">
+            <div>
+              <p class="pc__welcome" id="pc-welcome">Welcome back!</p>
+              <p class="pc__demo-note"><span class="badge badge--warning">Demo data</span> Sample information for preview — not a real child's record.</p>
+            </div>
+            <div class="pc__dash-actions">
+              <label class="sr-only" for="pc-child">Choose child</label>
+              <select class="select pc__child" id="pc-child" aria-label="Choose child">
+                <option value="c1">Alcy A. (Demo)</option>
+                <option value="c2">Sam B. (Demo)</option>
+              </select>
+              <button type="button" class="btn btn-outline" id="pc-signout">Sign out</button>
+            </div>
+          </div>
+
+          <div class="pc__grid" id="pc-grid"><!-- dashboard cards injected by JS --></div>
+
+          <!-- Private Ask the Teacher -->
+          <div class="pc__ask card" id="ask-teacher">
+            <h3 class="pc__ask-title">Ask the Teacher <span class="badge badge--info">Private</span></h3>
+            <p class="pc__ask-sub">Your messages are visible only to you and the teacher. (Demo — nothing is sent to a real teacher yet.)</p>
+
+            <form id="ask-form" class="pc__ask-form" novalidate>
+              <div class="pc__field">
+                <label class="form-label" for="ask-category">Category</label>
+                <select class="select" id="ask-category" required>
+                  <option value="">Choose a category…</option>
+                  <option>Homework</option>
+                  <option>Classwork</option>
+                  <option>Attendance</option>
+                  <option>Child's Progress</option>
+                  <option>Activities</option>
+                  <option>Other</option>
+                </select>
+                <p class="form-error" id="ask-category-err" hidden>Please choose a category.</p>
+              </div>
+              <div class="pc__field">
+                <label class="form-label" for="ask-message">Your message</label>
+                <textarea class="textarea" id="ask-message" required placeholder="Write your question for the teacher…"></textarea>
+                <p class="form-error" id="ask-message-err" hidden>Please write a short message.</p>
+              </div>
+              <div class="pc__form-row">
+                <button type="submit" class="btn btn-primary">Send to Teacher</button>
+                <p class="pc__form-status" id="ask-status" role="status" aria-live="polite"></p>
+              </div>
+            </form>
+
+            <h4 class="pc__conv-title">Your Conversations</h4>
+            <div id="ask-list" class="pc__conv-list" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Login modal (kept outside the hidden dashboard section so it always opens) -->
+    <div id="login-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="login-title" hidden>
+      <div class="modal__backdrop" data-close></div>
+      <div class="modal__panel modal__panel--form" role="document">
+        <button type="button" class="modal__close" data-close aria-label="Close login">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+        <h3 id="login-title" class="modal__title">Parent Login</h3>
+        <p class="pc__demo-note"><span class="badge badge--warning">Demo</span> This is a front-end placeholder. No real authentication yet.</p>
+
+        <form id="login-form" novalidate>
+          <div class="pc__field">
+            <label class="form-label" for="login-email">Parent email</label>
+            <input class="input" type="email" id="login-email" autocomplete="email" required placeholder="you@example.com">
+            <p class="form-error" id="login-email-err" hidden>Please enter a valid email address.</p>
+          </div>
+          <div class="pc__field">
+            <label class="form-label" for="login-password">Password</label>
+            <div class="pc__pw">
+              <input class="input" type="password" id="login-password" autocomplete="current-password" required placeholder="Your password">
+              <button type="button" class="pc__pw-toggle" id="login-pw-toggle" aria-pressed="false" aria-label="Show password">Show</button>
+            </div>
+            <p class="form-error" id="login-password-err" hidden>Please enter your password (at least 6 characters).</p>
+          </div>
+          <div class="pc__login-row">
+            <a class="pc__link" href="#login-modal" id="login-forgot">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary pc__login-btn">Sign In (Demo)</button>
+          <p class="pc__form-status" id="login-status" role="status" aria-live="polite"></p>
+          <p class="pc__login-create">New here? <a class="pc__link" href="#login-modal" id="login-create">Create an account</a> <span class="badge">Coming soon</span></p>
+        </form>
+      </div>
+    </div>
 
     <!-- AI assistant -->
     <section id="ai-assistant" aria-label="AI assistant"></section>
@@ -407,6 +496,6 @@
   <!-- Site footer -->
   <footer id="footer" aria-label="Site footer"></footer>
 
-  <script src="script.js?v=21"></script>
+  <script src="script.js?v=23"></script>
 </body>
 </html>
