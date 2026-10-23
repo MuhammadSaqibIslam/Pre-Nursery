@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap">
-  <link rel="stylesheet" href="style.css?v=13">
+  <link rel="stylesheet" href="style.css?v=18">
 </head>
 <body>
   <!-- Skip link for accessibility -->
@@ -336,10 +336,38 @@
     <section id="attendance" aria-label="Attendance"></section>
 
     <!-- Activities gallery -->
-    <section id="activities-gallery" aria-label="Activities gallery"></section>
+    <section id="activities-gallery" aria-label="Activities and learning gallery">
+      <div class="gal">
+        <header class="gal__head">
+          <h2 class="section-title">Little Hands, Big Discoveries!</h2>
+          <p class="section-subtitle">Explore the fun activities that make learning special every day.</p>
+        </header>
+        <div class="gal__filters" id="gal-filters" role="group" aria-label="Filter activities by category"></div>
+        <div id="gal-grid" class="gal__grid" aria-live="polite"></div>
+      </div>
+
+      <!-- Activity detail modal -->
+      <div id="gal-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="gal-modal-title" hidden>
+        <div class="modal__backdrop" data-close></div>
+        <div class="modal__panel" role="document">
+          <button type="button" class="modal__close" data-close aria-label="Close activity details">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+          <div id="gal-modal-body" class="modal__body"></div>
+        </div>
+      </div>
+    </section>
 
     <!-- Announcements -->
-    <section id="announcements" aria-label="Announcements"></section>
+    <section id="announcements" aria-label="Classroom announcements">
+      <div class="ann">
+        <header class="ann__head">
+          <h2 class="section-title">What's Happening in Our Classroom?</h2>
+          <p class="section-subtitle">Important updates and little reminders for our families.</p>
+        </header>
+        <div id="ann-list" class="ann__list" aria-live="polite"></div>
+      </div>
+    </section>
 
     <!-- Weekly plan -->
     <section id="weekly-plan" aria-label="Weekly plan"></section>
@@ -363,6 +391,6 @@
   <!-- Site footer -->
   <footer id="footer" aria-label="Site footer"></footer>
 
-  <script src="script.js?v=13"></script>
+  <script src="script.js?v=18"></script>
 </body>
 </html>

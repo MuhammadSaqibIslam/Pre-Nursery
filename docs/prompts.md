@@ -384,3 +384,31 @@ Keep rounded pill selector, existing colors/typography/shadows/arrow styling, Mo
 Direct date select; month/year nav; select updates feed; arrows still work; width/arrow positions stable across date strings; desktop+mobile; nothing else broken.
 
 Complete only this fix. Do not proceed to the next development phase.
+
+---
+
+# Prompt 9
+
+# Phase 6: Activities Gallery and Announcements
+
+Implement ONLY the Activities & Learning Gallery and Announcements sections. Preserve navbar, hero, overview, classwork feed, date selector.
+
+## 1. Activities & Learning Gallery
+Heading "Little Hands, Big Discoveries!"; subtitle "Explore the fun activities that make learning special every day." Categories: All Activities, Art & Craft, Alphabet, Numbers, Practical Life, Fine Motor Skills. Sample activities: Colorful Paper Butterfly, Letter A with Apple, Counting with Colorful Blocks, Sorting Shapes and Colors, Pouring and Transferring Practice, Finger Painting with Shapes. Each card: illustration/image, title, category label, short description, optional date. Imagery for ages 3–4; prefer local/inline SVG; no broken links or identifiable kids' photos. Interactions: working category filters; show only matching; friendly empty state; clickable card → accessible detail modal/panel with close control + keyboard; no needless interactions.
+
+## 2. Announcements
+Heading "What's Happening in Our Classroom?"; subtitle "Important updates and little reminders for our families." Sample cards: Please Bring Art Supplies, Upcoming Classroom Activity, Notebook Reminder, Holiday Notice, Special Activity Day. Each: date, title, description, label (Important/Reminder/Event), icon. Coordinated pastel accents per type. Important noticeable but not overwhelming; clickable → expand/detail; mouse+touch+keyboard; empty state when none. Do NOT invent real school dates/holidays/contacts/teacher announcements — all clearly sample data.
+
+## 3. Design
+Existing design system; warm backgrounds, colorful rounded cards, subtle shadows; consistent spacing/type; engaging not cluttered; responsive image proportions, no stretching; scannable announcements; logical properties for future RTL.
+
+## 4. Responsive
+Desktop multi-column; tablet fewer columns; mobile compact cards + comfortable touch; no horizontal overflow; modal fits small screens.
+
+## 5. Rules
+HTML/CSS/vanilla JS; reuse variables/components; clean JS data structures; no duplicate IDs/sections; don't modify navbar/hero/date selector/classwork; no teacher dashboard/backend/AI/translation; keep extensible for future teacher-managed content.
+
+## 6. Testing
+Filters work; detail interactions work; announcements correct; empty states; images render; desktop/tablet/mobile; no JS/CSS errors; prior sections still functional.
+
+Complete Phase 6 only. Do not proceed to Phase 7 automatically. Summarize files, features, tests, remaining issues. Wait for approval.
