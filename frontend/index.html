@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap">
-  <link rel="stylesheet" href="style.css?v=11">
+  <link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
   <!-- Skip link for accessibility -->
@@ -275,7 +275,62 @@
     </section>
 
     <!-- Classwork & homework -->
-    <section id="classwork-homework" aria-label="Classwork and homework"></section>
+    <section id="classwork-homework" aria-label="Daily classwork and homework">
+      <div class="cw">
+        <header class="cw__head">
+          <h2 class="section-title">What We Learned Today</h2>
+          <p class="section-subtitle">Little steps, big discoveries! Explore our daily learning and practise together at home.</p>
+        </header>
+
+        <div class="cw__controls">
+          <!-- Day navigation -->
+          <div class="cw__datenav" role="group" aria-label="Choose day">
+            <button type="button" id="cw-prev" class="cw__navbtn" aria-label="Previous day">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+
+            <div class="cw__date">
+              <button type="button" id="cw-date-trigger" class="cw__date-trigger"
+                      aria-haspopup="dialog" aria-expanded="false" aria-controls="cw-cal"
+                      aria-label="Open calendar to choose a date">
+                <span id="cw-date-label" class="cw__date-label">—</span>
+                <svg class="cw__date-caret" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <span id="cw-today-badge" class="badge badge--info cw__today">Today</span>
+            </div>
+
+            <button type="button" id="cw-next" class="cw__navbtn" aria-label="Next day">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+
+            <!-- Calendar popover -->
+            <div id="cw-cal" class="cw-cal" role="dialog" aria-modal="false" aria-label="Choose a date" hidden>
+              <div class="cw-cal__head">
+                <button type="button" id="cal-prev-year" class="cw-cal__nav" aria-label="Previous year">&laquo;</button>
+                <button type="button" id="cal-prev-month" class="cw-cal__nav" aria-label="Previous month">&lsaquo;</button>
+                <span id="cal-title" class="cw-cal__title" aria-live="polite"></span>
+                <button type="button" id="cal-next-month" class="cw-cal__nav" aria-label="Next month">&rsaquo;</button>
+                <button type="button" id="cal-next-year" class="cw-cal__nav" aria-label="Next year">&raquo;</button>
+              </div>
+              <div class="cw-cal__weekdays" aria-hidden="true">
+                <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+              </div>
+              <div id="cal-grid" class="cw-cal__grid" role="grid" aria-label="Calendar days"></div>
+              <div class="cw-cal__foot">
+                <button type="button" id="cal-today" class="cw-cal__foot-btn">Today</button>
+                <button type="button" id="cal-close" class="cw-cal__foot-btn">Close</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Subject filters (injected by JS) -->
+          <div class="cw__filters" id="cw-filters" role="group" aria-label="Filter by subject"></div>
+        </div>
+
+        <!-- Posts (rendered by JS) -->
+        <div id="cw-list" class="cw__list" aria-live="polite"></div>
+      </div>
+    </section>
 
     <!-- Attendance -->
     <section id="attendance" aria-label="Attendance"></section>
@@ -308,6 +363,6 @@
   <!-- Site footer -->
   <footer id="footer" aria-label="Site footer"></footer>
 
-  <script src="script.js?v=11"></script>
+  <script src="script.js?v=13"></script>
 </body>
 </html>

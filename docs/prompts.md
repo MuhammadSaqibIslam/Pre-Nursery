@@ -328,3 +328,59 @@ Dynamic current date; all card buttons navigate to correct existing IDs; semanti
 Section below hero; date correct; four cards render; links navigate correctly; desktop/tablet/mobile; no JS/CSS errors; navbar/hero/other structure intact.
 
 Complete Phase 4 only. Do not proceed to Phase 5 automatically. Summarize files changed, tests, remaining issues. Wait for approval.
+
+---
+
+# Prompt 7
+
+# Phase 5: Daily Classwork & Homework
+
+Implement ONLY the Daily Classwork & Homework section. Preserve navbar, hero, overview.
+
+## 1. Header
+Heading "What We Learned Today"; description "Little steps, big discoveries! Explore our daily learning and practise together at home." Use existing design system.
+
+## 2. Date + Navigation
+Today's date; date selector or prev/next-day controls; clear current-day indicator; previous dates show corresponding sample posts; future dates show no invented classwork; friendly empty state when none. Consistent date values in data model, format for display separately.
+
+## 3. Subject Filters
+All Subjects, English, Mathematics, Urdu, Practical Life, Art & Craft. Filter updates posts without reload; active filter distinct; works on mobile.
+
+## 4. Classwork/Homework Cards
+Each post supports: date, subject label, topic title, what children learned, classwork instructions, homework instructions, required materials, teacher's notes, optional illustration. Realistic sample content: English (Letter A recognition/tracing/apple vocab), Mathematics (counting 1–5 with objects), Urdu (basic letter), Practical Life (sorting & pouring), Art & Craft (paper butterfly). Distinguish classwork vs homework via headings/icons/subtle backgrounds. No invented real announcements or child-specific info.
+
+## 5. Visual
+Polished colorful Montessori layout; coordinated pastel subject accents; spacious rounded cards + subtle shadows; homework easy to scan; friendly typography + consistent icons; match navbar/hero/overview.
+
+## 6. JS Data Structure
+Clean reusable data (not duplicated cards); stable post IDs; consistent dates; i18n-ready (title.en/ur, classwork.en/ur, homework.en/ur). Full translation in Phase 10 — don't implement language system now.
+
+## 7. Functional
+Filters work; date nav works with sample data; cards update on date/subject change; empty states; clear control behavior; semantic + accessible; maintainable, no deps. Do NOT implement backend/db, teacher CMS, parent accounts, AI chat, full EN/UR switching, later-phase features.
+
+## 8. Testing
+Filters; date nav shows correct posts; future dates no fabricated posts; empty states; classwork/homework distinguishable; responsive; no JS/CSS errors; existing sections unchanged.
+
+Complete Phase 5 only. Do not proceed to Phase 6 automatically. Summarize files, tests, remaining issues. Wait for approval.
+
+---
+
+# Prompt 8
+
+# Fix Date Selector UI and Functionality
+
+Fix only the Daily Classwork & Homework date navigation component.
+
+## 1. Add Direct Date and Month Selection
+Keep prev/next arrows. Make displayed date clickable → opens clean calendar popover/date-picker. Select specific day/month/year; month+year navigation; highlight selected date; clear close; on select update displayed date + show matching posts; empty state if none; no fabricated posts; keyboard navigation + accessible labels. Use existing JS date/post data; no framework/deps.
+
+## 2. Fix Date Selector Width Shifting
+Stable consistent width; date text centered between arrows; fixed-width arrow areas; flexible center for longer date strings; short→long date must not move arrows/layout; keep centered/aligned in parent; appropriate min/max-width + box-sizing; date text must not push arrows apart; no horizontal scroll; small screens responsive fixed/full width without overflow. Visually stable across any date/month/year.
+
+## 3. Preserve Existing Design
+Keep rounded pill selector, existing colors/typography/shadows/arrow styling, Montessori consistency; don't change surrounding classwork section; modify only necessary HTML/CSS/JS.
+
+## 4. Testing
+Direct date select; month/year nav; select updates feed; arrows still work; width/arrow positions stable across date strings; desktop+mobile; nothing else broken.
+
+Complete only this fix. Do not proceed to the next development phase.
