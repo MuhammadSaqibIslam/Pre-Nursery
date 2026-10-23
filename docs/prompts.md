@@ -297,3 +297,34 @@ Keep heading "Welcome to Our Little Learning World!", supporting text, primary "
 EN/UR selector visible + works (selected-state), fits desktop + mobile, age label removed, new illustration renders, both CTAs navigate to correct IDs, no horizontal overflow / JS errors. Modify only required files; preserve design system + other work.
 
 Complete these corrections only. Do not proceed to Phase 4. Report the changes and wait for my approval.
+
+---
+
+# Prompt 6
+
+# Phase 4: Today's Classroom Overview
+
+Continue working in the existing Montessori Class Portal project. Phases 1–3 completed and approved. Implement ONLY the Today's Classroom Overview section.
+
+## 1. Section Design
+Welcoming section directly below the hero. Use existing design system/pastels/typography/spacing/cards. Include: heading "A Little Look at Today"; supporting text "Here's what's happening in our classroom."; today's date formatted dynamically via JS; a friendly greeting that does not rely on an inaccurate fixed time of day.
+
+## 2. Summary Cards (four)
+- Card 1 Today's Classwork — book/notebook icon — "See what we learned today." — button "View Classwork" → `classwork-homework`.
+- Card 2 Homework — backpack/pencil icon — "A little practice for home." — button "View Homework" → `classwork-homework`.
+- Card 3 Upcoming Activities — calendar/art icon — "See what's coming up next." — button "View Activities" → `activities-gallery`.
+- Card 4 Teacher's Announcements — bell/message icon — "Important classroom updates." — button "View Announcements" → `announcements`.
+
+## 3. Visual
+Four balanced cards, soft pastel accents, each a distinct but coordinated accent color; rounded corners, subtle shadows, clear typography; consistent icon style/size; comfortable spacing; engaging but not over-decorated; match navbar/hero; polished, not generic admin widgets.
+
+## 4. Responsive
+Desktop four in a row where space allows; tablet two per row; mobile one or two per row; no horizontal overflow or text clipping; tappable buttons.
+
+## 5. Functional
+Dynamic current date; all card buttons navigate to correct existing IDs; semantic HTML + accessible labels; reuse tokens/components; no frameworks; no duplicate sections/IDs; don't modify navbar/hero; no real data/backend.
+
+## 6. Testing
+Section below hero; date correct; four cards render; links navigate correctly; desktop/tablet/mobile; no JS/CSS errors; navbar/hero/other structure intact.
+
+Complete Phase 4 only. Do not proceed to Phase 5 automatically. Summarize files changed, tests, remaining issues. Wait for approval.

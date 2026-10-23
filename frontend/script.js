@@ -7,6 +7,21 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("Montessori Pre-Nursery Portal — navbar & hero ready.");
 
+  // Today's Classroom Overview — dynamic date + time-accurate greeting
+  var now = new Date();
+  var dateEl = document.getElementById("overview-date");
+  if (dateEl) {
+    dateEl.textContent = now.toLocaleDateString(undefined, {
+      weekday: "long", year: "numeric", month: "long", day: "numeric"
+    });
+  }
+  var greetEl = document.getElementById("overview-greeting");
+  if (greetEl) {
+    var h = now.getHours();
+    var part = h < 12 ? "morning" : (h < 17 ? "afternoon" : "evening");
+    greetEl.textContent = "Good " + part + ", lovely families!";
+  }
+
   var toggle = document.getElementById("nav-toggle");
   var menu = document.getElementById("nav-menu");
 

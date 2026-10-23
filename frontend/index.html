@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap">
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
   <!-- Skip link for accessibility -->
@@ -207,7 +207,72 @@
     </section>
 
     <!-- Today's classroom overview -->
-    <section id="classroom-overview" aria-label="Classroom overview"></section>
+    <section id="classroom-overview" aria-label="Today's classroom overview">
+      <div class="overview">
+        <div class="overview__head">
+          <p class="overview__greeting" id="overview-greeting">Hello, lovely families!</p>
+          <h2 class="section-title">A Little Look at Today</h2>
+          <p class="section-subtitle">Here's what's happening in our classroom.</p>
+          <p class="overview__date" id="overview-date"></p>
+        </div>
+
+        <div class="overview__grid">
+          <!-- Card 1: Today's Classwork -->
+          <article class="o-card o-card--classwork">
+            <span class="icon-box o-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 5a2 2 0 0 1 2-2h7v16H6a2 2 0 0 0-2 2z"/>
+                <path d="M20 5a2 2 0 0 0-2-2h-5v16h5a2 2 0 0 1 2 2z"/>
+              </svg>
+            </span>
+            <h3 class="o-card__title">Today's Classwork</h3>
+            <p class="o-card__text">See what we learned today.</p>
+            <a class="btn btn-outline o-card__btn" href="#classwork-homework">View Classwork</a>
+          </article>
+
+          <!-- Card 2: Homework -->
+          <article class="o-card o-card--homework">
+            <span class="icon-box o-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 4h6a2 2 0 0 1 2 2v1h1a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3h1V6a2 2 0 0 1 2-2z"/>
+                <path d="M9 7h6V6H9z"/>
+                <path d="M12 11v5M9.5 13.5h5"/>
+              </svg>
+            </span>
+            <h3 class="o-card__title">Homework</h3>
+            <p class="o-card__text">A little practice for home.</p>
+            <a class="btn btn-outline o-card__btn" href="#classwork-homework">View Homework</a>
+          </article>
+
+          <!-- Card 3: Upcoming Activities -->
+          <article class="o-card o-card--activities">
+            <span class="icon-box o-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4.5" width="18" height="16" rx="2"/>
+                <path d="M3 9h18M8 3v4M16 3v4"/>
+                <path d="M8 13h3M8 16.5h6"/>
+              </svg>
+            </span>
+            <h3 class="o-card__title">Upcoming Activities</h3>
+            <p class="o-card__text">See what's coming up next.</p>
+            <a class="btn btn-outline o-card__btn" href="#activities-gallery">View Activities</a>
+          </article>
+
+          <!-- Card 4: Teacher's Announcements -->
+          <article class="o-card o-card--announcements">
+            <span class="icon-box o-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
+                <path d="M13.5 21a2 2 0 0 1-3 0"/>
+              </svg>
+            </span>
+            <h3 class="o-card__title">Teacher's Announcements</h3>
+            <p class="o-card__text">Important classroom updates.</p>
+            <a class="btn btn-outline o-card__btn" href="#announcements">View Announcements</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <!-- Classwork & homework -->
     <section id="classwork-homework" aria-label="Classwork and homework"></section>
@@ -243,6 +308,6 @@
   <!-- Site footer -->
   <footer id="footer" aria-label="Site footer"></footer>
 
-  <script src="script.js?v=10"></script>
+  <script src="script.js?v=11"></script>
 </body>
 </html>

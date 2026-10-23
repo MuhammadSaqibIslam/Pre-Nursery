@@ -713,6 +713,95 @@ p  { margin-block: 0 var(--space-4); }
   .hero__art svg { max-inline-size: 280px; }
 }
 
+/* ============================================================
+   Phase 4 — Today's Classroom Overview
+   ============================================================ */
+#classroom-overview { background: var(--bg-body); }
+
+.overview {
+  inline-size: 100%;
+  max-inline-size: var(--content-wide);
+  margin-inline: auto;
+}
+.overview__head { text-align: center; margin-block-end: var(--space-6); }
+.overview__greeting {
+  display: inline-block;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
+  color: var(--color-secondary-hover);
+  background: var(--pastel-peach);
+  padding: var(--space-1) var(--space-4);
+  border-radius: var(--radius-pill);
+  margin-block-end: var(--space-3);
+}
+.overview__head .section-title,
+.overview__head .section-subtitle { text-align: center; }
+.overview__date {
+  font-weight: var(--fw-bold);
+  color: var(--text-muted);
+  margin-block: 0;
+}
+
+/* responsive card grid: 4 -> 2 -> 1/2 */
+.overview__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.o-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-5);
+  border-block-start: 4px solid var(--border);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.o-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+.o-card__icon { margin-block-end: var(--space-1); }
+.o-card__title { font-size: var(--fs-lg); font-weight: var(--fw-bold); margin: 0; }
+.o-card__text { color: var(--text-muted); font-size: var(--fs-sm); margin: 0; flex: 1; }
+.o-card__btn {
+  margin-block-start: var(--space-3);
+  align-self: stretch;
+  padding-block: var(--space-2);
+  font-size: var(--fs-sm);
+}
+
+/* distinct, coordinated accent per card */
+.o-card--classwork     { border-block-start-color: var(--color-primary); }
+.o-card--classwork .o-card__icon { background: var(--pastel-blue); color: var(--color-primary-hover); }
+.o-card--classwork .o-card__btn  { color: var(--color-primary); border-color: var(--color-primary); }
+.o-card--classwork .o-card__btn:hover { background: var(--pastel-blue); }
+
+.o-card--homework      { border-block-start-color: var(--color-secondary); }
+.o-card--homework .o-card__icon { background: var(--pastel-peach); color: var(--color-secondary-hover); }
+.o-card--homework .o-card__btn  { color: var(--color-secondary-hover); border-color: var(--color-secondary); }
+.o-card--homework .o-card__btn:hover { background: var(--pastel-peach); }
+
+.o-card--activities    { border-block-start-color: var(--color-success); }
+.o-card--activities .o-card__icon { background: var(--pastel-mint); color: var(--color-success); }
+.o-card--activities .o-card__btn  { color: var(--color-success); border-color: var(--color-success); }
+.o-card--activities .o-card__btn:hover { background: var(--pastel-mint); }
+
+.o-card--announcements { border-block-start-color: var(--color-warning); }
+.o-card--announcements .o-card__icon { background: var(--pastel-yellow); color: var(--color-warning); }
+.o-card--announcements .o-card__btn  { color: #7a5410; border-color: var(--color-warning); }
+.o-card--announcements .o-card__btn:hover { background: var(--pastel-yellow); }
+
+@media (max-width: 900px) {
+  .overview__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 460px) {
+  .overview__grid { grid-template-columns: 1fr; }
+}
+
 /* ---------- 15. Motion preferences ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
