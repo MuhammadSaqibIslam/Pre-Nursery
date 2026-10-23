@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Montessori Pre-Nursery Class Management Portal for teacher and parents of children aged 3–4 years.">
+  <title>Montessori Pre-Nursery Portal</title>
+  <!-- Fonts: Nunito for English (Urdu font prepared via CSS variables for later) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="style.css?v=10">
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Site header / navigation -->
+  <header id="navbar" aria-label="Site navigation">
+    <nav class="nav" aria-label="Primary">
+      <!-- Brand -->
+      <a class="nav__brand" href="#hero" aria-label="Sunshine Sprouts Montessori home">
+        <span class="nav__logo" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
+            <g>
+              <g fill="#f4b740">
+                <ellipse cx="24" cy="8"  rx="4.5" ry="8"/>
+                <ellipse cx="24" cy="40" rx="4.5" ry="8"/>
+                <ellipse cx="8"  cy="24" rx="8" ry="4.5"/>
+                <ellipse cx="40" cy="24" rx="8" ry="4.5"/>
+                <ellipse cx="12.7" cy="12.7" rx="7" ry="4.5" transform="rotate(45 12.7 12.7)"/>
+                <ellipse cx="35.3" cy="12.7" rx="7" ry="4.5" transform="rotate(-45 35.3 12.7)"/>
+                <ellipse cx="12.7" cy="35.3" rx="7" ry="4.5" transform="rotate(-45 12.7 35.3)"/>
+                <ellipse cx="35.3" cy="35.3" rx="7" ry="4.5" transform="rotate(45 35.3 35.3)"/>
+              </g>
+              <circle cx="24" cy="24" r="8.5" fill="#8a5a2b"/>
+            </g>
+          </svg>
+        </span>
+        <span class="nav__brand-name">
+          <span class="nav__brand-1">Sunshine Sprouts</span>
+          <span class="nav__brand-2">Montessori</span>
+        </span>
+      </a>
+
+      <!-- Hamburger (mobile) -->
+      <button class="nav__toggle" id="nav-toggle" type="button"
+              aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+      </button>
+
+      <!-- Collapsible menu -->
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__links">
+          <li><a class="nav__link" href="#hero">Home</a></li>
+          <li><a class="nav__link" href="#classwork-homework">Daily Classwork</a></li>
+          <li><a class="nav__link" href="#classwork-homework">Homework</a></li>
+          <li><a class="nav__link" href="#activities-gallery">Activities</a></li>
+          <li><a class="nav__link" href="#announcements">Announcements</a></li>
+          <li><a class="nav__link" href="#parent-communication">Ask Teacher</a></li>
+        </ul>
+
+        <!-- Right-side actions: language switcher + Parent Login -->
+        <div class="nav__actions">
+          <!-- Language switcher (UI + selected-state only; full translation/RTL in Phase 10) -->
+          <div class="lang-switch" role="group" aria-label="Choose language">
+            <button class="lang-switch__btn is-active" type="button" data-lang="en" aria-pressed="true">English</button>
+            <button class="lang-switch__btn" type="button" data-lang="ur" aria-pressed="false" lang="ur">اردو</button>
+          </div>
+
+          <!-- Parent Login (outlined button with user icon; placeholder — no real auth yet) -->
+          <a class="btn btn-outline nav__login" href="#parent-communication">
+            <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"
+                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+            Parent Login
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero / intro -->
+    <section id="hero" aria-label="Introduction">
+      <div class="hero">
+        <!-- Text column -->
+        <div class="hero__content">
+          <span class="hero__label">LET'S LEARN &amp; GROW</span>
+          <h1 class="hero__title">Welcome to Our <span class="hero__accent">Little Learning World!</span></h1>
+          <p class="hero__desc">Growing, learning, and smiling together every day.</p>
+          <div class="hero__actions">
+            <a class="btn btn-hero-primary" href="#classwork-homework">
+              <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"
+                   fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 5a2 2 0 0 1 2-2h5v16H5a2 2 0 0 0-2 2z"/>
+                <path d="M21 5a2 2 0 0 0-2-2h-5v16h5a2 2 0 0 1 2 2z"/>
+              </svg>
+              View Today's Classwork
+            </a>
+            <a class="btn btn-hero-secondary" href="#parent-communication">
+              <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"
+                   fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+              Ask the Teacher
+            </a>
+          </div>
+        </div>
+
+        <!-- Illustration column: a tidy Montessori learning shelf -->
+        <div class="hero__art" aria-hidden="true">
+          <svg viewBox="0 0 480 440" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Montessori learning shelf with books, blocks, abacus and a plant</title>
+
+            <!-- soft backdrop -->
+            <rect x="46" y="48" width="388" height="340" rx="34" fill="#fff6e6"/>
+            <rect x="46" y="48" width="388" height="340" rx="34" fill="none" stroke="#f1e2c4" stroke-width="2"/>
+            <!-- gentle floor shadow -->
+            <ellipse cx="240" cy="398" rx="170" ry="16" fill="#efe3cc" opacity="0.7"/>
+
+            <!-- wooden shelf unit -->
+            <g>
+              <rect x="86" y="92" width="308" height="276" rx="14" fill="#fbe9cf"/>
+              <rect x="86" y="92" width="308" height="276" rx="14" fill="none" stroke="#e7cfa0" stroke-width="3"/>
+              <!-- shelf planks -->
+              <rect x="86" y="214" width="308" height="12" fill="#e7c892"/>
+              <rect x="86" y="356" width="308" height="12" fill="#e7c892"/>
+            </g>
+
+            <!-- ===== TOP SHELF (baseline y=214) ===== -->
+            <!-- standing books -->
+            <g>
+              <rect x="108" y="168" width="16" height="46" rx="3" fill="#f6a6b8"/>
+              <rect x="126" y="156" width="16" height="58" rx="3" fill="#a9d8ef"/>
+              <rect x="144" y="176" width="16" height="38" rx="3" fill="#bfe3b0"/>
+              <rect x="162" y="162" width="16" height="52" rx="3" fill="#ffcf87"/>
+            </g>
+
+            <!-- alphabet blocks (A B + C on top) -->
+            <g font-family="Nunito, sans-serif" font-weight="800" text-anchor="middle">
+              <rect x="214" y="172" width="42" height="42" rx="8" fill="#ffcf87"/>
+              <text x="235" y="202" font-size="24" fill="#9a6a1e">A</text>
+              <rect x="258" y="172" width="42" height="42" rx="8" fill="#f6a6b8"/>
+              <text x="279" y="202" font-size="24" fill="#ffffff">B</text>
+              <rect x="236" y="130" width="42" height="42" rx="8" fill="#a9d8ef"/>
+              <text x="257" y="160" font-size="24" fill="#2f6f93">C</text>
+            </g>
+
+            <!-- potted plant -->
+            <g>
+              <path d="M345 182 q-14 -30 -2 -48" fill="none" stroke="#8fbf6a" stroke-width="5" stroke-linecap="round"/>
+              <path d="M345 182 q14 -26 4 -50" fill="none" stroke="#8fbf6a" stroke-width="5" stroke-linecap="round"/>
+              <ellipse cx="333" cy="140" rx="10" ry="16" fill="#9ccb73" transform="rotate(-20 333 140)"/>
+              <ellipse cx="357" cy="138" rx="10" ry="16" fill="#bfe3b0" transform="rotate(20 357 138)"/>
+              <ellipse cx="345" cy="128" rx="9" ry="15" fill="#9ccb73"/>
+              <path d="M330 182 h34 l-5 30 h-24 z" fill="#e8926a"/>
+            </g>
+
+            <!-- ===== BOTTOM SHELF (baseline y=356) ===== -->
+            <!-- abacus (counting) -->
+            <g>
+              <rect x="104" y="296" width="120" height="60" rx="10" fill="#ffffff"/>
+              <rect x="104" y="296" width="120" height="60" rx="10" fill="none" stroke="#e7c892" stroke-width="5"/>
+              <g stroke="#e7c892" stroke-width="3">
+                <line x1="110" y1="314" x2="218" y2="314"/>
+                <line x1="110" y1="326" x2="218" y2="326"/>
+                <line x1="110" y1="338" x2="218" y2="338"/>
+              </g>
+              <g>
+                <circle cx="124" cy="314" r="6" fill="#f6a6b8"/><circle cx="138" cy="314" r="6" fill="#a9d8ef"/><circle cx="152" cy="314" r="6" fill="#bfe3b0"/><circle cx="200" cy="314" r="6" fill="#ffcf87"/>
+                <circle cx="124" cy="326" r="6" fill="#ffcf87"/><circle cx="138" cy="326" r="6" fill="#bfe3b0"/><circle cx="186" cy="326" r="6" fill="#f6a6b8"/><circle cx="200" cy="326" r="6" fill="#a9d8ef"/>
+                <circle cx="124" cy="338" r="6" fill="#a9d8ef"/><circle cx="138" cy="338" r="6" fill="#f6a6b8"/><circle cx="152" cy="338" r="6" fill="#ffcf87"/><circle cx="200" cy="338" r="6" fill="#bfe3b0"/>
+              </g>
+            </g>
+
+            <!-- stacked lying books -->
+            <g>
+              <rect x="246" y="334" width="96" height="20" rx="4" fill="#c9b8ec"/>
+              <rect x="252" y="316" width="90" height="20" rx="4" fill="#ffcf87"/>
+              <rect x="242" y="298" width="92" height="20" rx="4" fill="#a9d8ef"/>
+              <!-- page edges -->
+              <line x1="250" y1="308" x2="326" y2="308" stroke="#ffffff" stroke-width="2"/>
+              <line x1="258" y1="326" x2="334" y2="326" stroke="#ffffff" stroke-width="2"/>
+            </g>
+
+            <!-- pencil cup -->
+            <g>
+              <rect x="352" y="312" width="30" height="8" rx="3" fill="#8fbf6a"/>
+              <rect x="356" y="306" width="4" height="34" rx="2" fill="#f6a6b8"/>
+              <rect x="365" y="300" width="4" height="40" rx="2" fill="#a9d8ef"/>
+              <rect x="374" y="308" width="4" height="32" rx="2" fill="#ffcf87"/>
+              <path d="M348 320 h38 l-4 36 h-30 z" fill="#f4c76a"/>
+            </g>
+
+            <!-- subtle decorative accents (minimal) -->
+            <circle cx="70" cy="86" r="5" fill="#f6a6b8" opacity="0.8"/>
+            <circle cx="410" cy="330" r="5" fill="#a9d8ef" opacity="0.8"/>
+            <path d="M406 96 l3 7 7 1 -5 5 1 7 -6-4 -6 4 1-7 -5-5 7-1z" fill="#ffd646" opacity="0.9"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Today's classroom overview -->
+    <section id="classroom-overview" aria-label="Classroom overview"></section>
+
+    <!-- Classwork & homework -->
+    <section id="classwork-homework" aria-label="Classwork and homework"></section>
+
+    <!-- Attendance -->
+    <section id="attendance" aria-label="Attendance"></section>
+
+    <!-- Activities gallery -->
+    <section id="activities-gallery" aria-label="Activities gallery"></section>
+
+    <!-- Announcements -->
+    <section id="announcements" aria-label="Announcements"></section>
+
+    <!-- Weekly plan -->
+    <section id="weekly-plan" aria-label="Weekly plan"></section>
+
+    <!-- Learning resources -->
+    <section id="learning-resources" aria-label="Learning resources"></section>
+
+    <!-- Parent communication -->
+    <section id="parent-communication" aria-label="Parent communication"></section>
+
+    <!-- AI assistant -->
+    <section id="ai-assistant" aria-label="AI assistant"></section>
+
+    <!-- FAQ -->
+    <section id="faq" aria-label="Frequently asked questions"></section>
+  </main>
+
+  <!-- Future teacher dashboard (placeholder, hidden until built) -->
+  <section id="teacher-dashboard" aria-label="Teacher dashboard" hidden></section>
+
+  <!-- Site footer -->
+  <footer id="footer" aria-label="Site footer"></footer>
+
+  <script src="script.js?v=10"></script>
+</body>
+</html>
