@@ -412,3 +412,28 @@ HTML/CSS/vanilla JS; reuse variables/components; clean JS data structures; no du
 Filters work; detail interactions work; announcements correct; empty states; images render; desktop/tablet/mobile; no JS/CSS errors; prior sections still functional.
 
 Complete Phase 6 only. Do not proceed to Phase 7 automatically. Summarize files, features, tests, remaining issues. Wait for approval.
+
+---
+
+# Prompt 10
+
+# Phase 7: Weekly Learning Plan and Parent FAQ
+
+Implement ONLY the Weekly Learning Plan and Parent FAQ sections. Preserve all existing sections/functionality.
+
+## 1. Weekly Learning Plan
+Heading "Our Little Learning Journey"; subtitle "A week full of fun, discovery, and learning." Colorful Mon–Fri schedule. Each day: day name + date, main topic, subject/area, planned activity, materials to prepare, optional special-activity indicator. Sample activities: Mon Alphabet recognition, Tue Counting and sorting, Wed Urdu letter recognition, Thu Practical Life, Fri Art & Craft. These are sample, not confirmed plans; consistent data structure for future teacher dashboard. Design: day cards / horizontal weekly schedule desktop; stacked/scrollable mobile only if needed; highlight current day; empty state if none; not overcrowded; reuse design system.
+
+## 2. Parent FAQ
+Heading "Questions Parents Often Ask"; subtitle "Quick answers to help make learning at home easier." Accessible accordion, 7 Q&A: (1) What should my child bring to class? (2) How can I help my child practise at home? (3) Where can I check daily homework? (4) How can I contact the teacher? (5) What should I do if my child misses class? (6) How much practice is suitable for a child aged 3–4? (7) How can I support my child's independence? Short friendly practical answers. Don't invent teacher contacts/policies/attendance rules — where it depends on teacher policy, advise contacting the teacher. Interactions: click expands/collapses; ARIA; keyboard; visible focus; readable on mobile.
+
+## 3. Design
+Existing colors/typography/spacing/cards; consistent with approved sections; soft pastels + subtle shadows; scannable schedule; avoid unnecessary animation; logical properties for future RTL.
+
+## 4. Restrictions
+HTML/CSS/vanilla JS; reuse components/tokens; no duplicate sections; don't change navbar/hero/classwork/date selector/gallery/announcements; no teacher dashboard/backend/AI/full language switching; keep sample data separate from markup.
+
+## 5. Testing
+Five weekdays display; responsive; current-day indicator; FAQ expand/collapse; keyboard + ARIA; empty states; existing intact; no JS/CSS errors.
+
+Complete Phase 7 only. Do not proceed to Phase 8 automatically. Summarize files, features, tests, remaining issues. Wait for approval.

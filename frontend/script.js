@@ -29,6 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
   initGallery();
   initAnnouncements();
 
+  // ---- Phase 7: Weekly Plan + FAQ ----
+  initWeeklyPlan();
+  initFaq();
+
   var toggle = document.getElementById("nav-toggle");
   var menu = document.getElementById("nav-menu");
 
@@ -710,5 +714,140 @@ function initAnnouncements() {
     btn.setAttribute("aria-expanded", open ? "false" : "true");
     detail.hidden = open;
     btn.textContent = open ? "Read more" : "Show less";
+  });
+}
+
+/* ===========================================================
+   Phase 7 — Weekly Learning Plan (sample data)
+   =========================================================== */
+function initWeeklyPlan() {
+  "use strict";
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+  // area keys reuse subject accent styling
+  var WEEK = [
+    { day: "Monday",    area: "english",   areaLabel: "English",        topic: "Alphabet Recognition",
+      activity: "Letter hunt and tracing on sand trays.", materials: "Crayons, tracing sheet", special: false },
+    { day: "Tuesday",   area: "math",      areaLabel: "Mathematics",    topic: "Counting & Sorting",
+      activity: "Count and sort colourful buttons from 1 to 5.", materials: "Buttons, counting beads", special: false },
+    { day: "Wednesday", area: "urdu",      areaLabel: "Urdu",           topic: "Urdu Letter Recognition",
+      activity: "Meet a new Urdu letter with big flashcards.", materials: "Urdu flashcard", special: false },
+    { day: "Thursday",  area: "practical", areaLabel: "Practical Life", topic: "Practical Life Skills",
+      activity: "Pouring and spooning station for busy hands.", materials: "Small jug, spoons, tray", special: false },
+    { day: "Friday",    area: "art",       areaLabel: "Art & Craft",    topic: "Art & Craft Day",
+      activity: "Create a colourful paper craft together.", materials: "Paper, glue, washable paint", special: true }
+  ];
+
+  var grid = document.getElementById("wk-grid");
+  if (!grid) return;
+
+  if (!WEEK.length) {
+    grid.className = "wk__grid wk__grid--empty";
+    grid.innerHTML =
+      '<div class="empty-state"><span class="empty-state__icon" aria-hidden="true">🗓️</span>' +
+      '<p class="empty-state__title">No weekly plan yet</p>' +
+      '<p>The learning journey for this week will appear here soon.</p></div>';
+    return;
+  }
+
+  // Monday of the current week, then each weekday date
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  function isoOf(d) {
+    var m = ("0" + (d.getMonth() + 1)).slice(-2), day = ("0" + d.getDate()).slice(-2);
+    return d.getFullYear() + "-" + m + "-" + day;
+  }
+  var monday = new Date(today.getTime());
+  var wd = monday.getDay();
+  monday.setDate(monday.getDate() + (wd === 0 ? -6 : 1 - wd));
+  var todayKey = isoOf(today);
+
+  grid.className = "wk__grid";
+  grid.innerHTML = WEEK.map(function (d, i) {
+    var date = new Date(monday.getTime()); date.setDate(monday.getDate() + i);
+    var isToday = isoOf(date) === todayKey;
+    var dateStr = date.toLocaleDateString(undefined, { month: "short", day: "numeric" });
+    return (
+      '<article class="wk-card wk-card--' + d.area + (isToday ? " is-today" : "") + '">' +
+        '<div class="wk-card__dayrow">' +
+          '<span class="wk-card__name">' + esc(d.day) + '</span>' +
+          (isToday ? '<span class="wk-card__today">Today</span>' : '') +
+        '</div>' +
+        '<span class="wk-card__date">' + esc(dateStr) + '</span>' +
+        '<span class="wk-card__area">' + esc(d.areaLabel) + '</span>' +
+        '<h3 class="wk-card__topic">' + esc(d.topic) + '</h3>' +
+        '<p class="wk-card__activity">' + esc(d.activity) + '</p>' +
+        '<div class="wk-card__materials"><dt>Bring</dt><dd>' + esc(d.materials) + '</dd></div>' +
+        (d.special ? '<span class="wk-card__special"><span aria-hidden="true">⭐</span> Special activity</span>' : '') +
+      '</article>'
+    );
+  }).join("");
+}
+
+/* ===========================================================
+   Phase 7 — Parent FAQ (accessible accordion)
+   =========================================================== */
+function initFaq() {
+  "use strict";
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+  var FAQS = [
+    { q: "What should my child bring to class?",
+      a: "Usually a labelled water bottle, a spare set of clothes, and any materials mentioned in the daily post or announcements. When something specific is needed, it will be shared in advance." },
+    { q: "How can I help my child practise at home?",
+      a: "Keep it short and playful — a few minutes of tracing, counting everyday objects, or talking about colours and shapes. Follow the little homework note for each day and celebrate small wins." },
+    { q: "Where can I check daily homework?",
+      a: "Open the “What We Learned Today” section and pick the day. Each post shows the classwork and a small homework idea to try together at home." },
+    { q: "How can I contact the teacher?",
+      a: "Please use the contact method your teacher has shared with you. If you are unsure, reach out to the teacher directly to confirm the best way to stay in touch." },
+    { q: "What should I do if my child misses class?",
+      a: "Check that day's post to see what was covered, and try the activity at home. For anything that depends on the class routine or attendance, please contact the teacher." },
+    { q: "How much practice is suitable for a child aged 3–4?",
+      a: "Just a few short, happy minutes a day is plenty at this age. Little and often works far better than long sessions — stop while it is still fun." },
+    { q: "How can I support my child's independence?",
+      a: "Let them try small tasks themselves — carrying their bag, pouring water, tidying toys — and offer gentle help only when needed. Patience and praise build confidence." }
+  ];
+
+  var listEl = document.getElementById("faq-list");
+  if (!listEl) return;
+
+  if (!FAQS.length) {
+    listEl.innerHTML =
+      '<div class="empty-state"><span class="empty-state__icon" aria-hidden="true">💬</span>' +
+      '<p class="empty-state__title">No questions yet</p>' +
+      '<p>Helpful answers for parents will appear here soon.</p></div>';
+    return;
+  }
+
+  listEl.innerHTML = FAQS.map(function (f, i) {
+    var n = i + 1;
+    return (
+      '<div class="faq-item">' +
+        '<h3 class="faq-item__h">' +
+          '<button type="button" class="faq-item__btn" id="faq-q-' + n + '" ' +
+            'aria-expanded="false" aria-controls="faq-a-' + n + '">' +
+            '<span class="faq-item__q">' + esc(f.q) + '</span>' +
+            '<svg class="faq-item__icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>' +
+          '</button>' +
+        '</h3>' +
+        '<div class="faq-item__a" id="faq-a-' + n + '" role="region" aria-labelledby="faq-q-' + n + '" hidden>' +
+          '<p>' + esc(f.a) + '</p>' +
+        '</div>' +
+      '</div>'
+    );
+  }).join("");
+
+  listEl.addEventListener("click", function (e) {
+    var btn = e.target.closest(".faq-item__btn");
+    if (!btn) return;
+    var panel = document.getElementById(btn.getAttribute("aria-controls"));
+    var open = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", open ? "false" : "true");
+    panel.hidden = open;
   });
 }

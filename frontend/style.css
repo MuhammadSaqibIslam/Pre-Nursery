@@ -130,13 +130,14 @@ img, svg, video { max-width: 100%; height: auto; }
 
 a { color: var(--color-primary); }
 
-/* Keep empty section containers spaced during development */
 main > section,
 header,
 footer {
   padding-block: var(--space-6);
   padding-inline: var(--space-4);
 }
+/* Not-yet-built placeholder sections must not add blank vertical bands */
+main > section:empty { padding-block: 0; }
 
 /* ---------- 3. Typography styles ---------- */
 h1, h2, h3, h4 {
@@ -1214,10 +1215,102 @@ p  { margin-block: 0 var(--space-4); }
 .overview__head .section-subtitle,
 .cw__head .section-subtitle,
 .gal__head .section-subtitle,
-.ann__head .section-subtitle { margin-block-end: 0; }
+.ann__head .section-subtitle,
+.wk__head .section-subtitle,
+.faq__head .section-subtitle { margin-block-end: 0; }
 
-.cw__head, .gal__head, .overview__head, .ann__head { margin-block-end: var(--space-4); }
+.cw__head, .gal__head, .overview__head, .ann__head, .wk__head, .faq__head { margin-block-end: var(--space-4); }
 .gal__filters { margin-block-end: var(--space-5); }
+
+/* ============================================================
+   Phase 7 — Weekly Learning Plan + Parent FAQ
+   ============================================================ */
+/* Tighten the Weekly Plan -> FAQ transition (reduce the real section padding,
+   not with negative margins). ~48px desktop / ~32px mobile between the two. */
+#weekly-plan { background: var(--bg-body); padding-block-end: var(--space-5); }
+.wk { inline-size: 100%; max-inline-size: var(--content-wide); margin-inline: auto; }
+.wk__head { text-align: center; }
+.wk__head .section-title, .wk__head .section-subtitle { text-align: center; }
+
+.wk__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-4); }
+.wk__grid--empty { display: block; }
+
+.wk-card {
+  display: flex; flex-direction: column; gap: var(--space-1);
+  background: var(--surface); border: 1px solid var(--border);
+  border-block-start: 4px solid var(--border);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);
+  padding: var(--space-4);
+}
+.wk-card__dayrow { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.wk-card__name { font-weight: var(--fw-heavy); font-size: var(--fs-md); }
+.wk-card__today {
+  font-size: var(--fs-xs); font-weight: var(--fw-bold); color: var(--text-on-brand);
+  background: var(--color-primary); padding: 1px var(--space-2); border-radius: var(--radius-pill);
+}
+.wk-card__date { font-size: var(--fs-xs); font-weight: var(--fw-bold); color: var(--text-muted); }
+.wk-card__area {
+  align-self: flex-start; margin-block-start: var(--space-2);
+  font-size: var(--fs-xs); font-weight: var(--fw-bold);
+  padding: 2px var(--space-3); border-radius: var(--radius-pill);
+  background: var(--bg-muted); color: var(--text);
+}
+.wk-card__topic { font-size: var(--fs-md); font-weight: var(--fw-bold); margin: var(--space-1) 0 0; }
+.wk-card__activity { font-size: var(--fs-sm); color: var(--text-muted); margin: 0; }
+.wk-card__materials { margin-block-start: auto; padding-block-start: var(--space-2); }
+.wk-card__materials dt { font-size: var(--fs-xs); font-weight: var(--fw-bold); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; }
+.wk-card__materials dd { margin: 0; font-size: var(--fs-sm); }
+.wk-card__special {
+  margin-block-start: var(--space-2); align-self: flex-start;
+  font-size: var(--fs-xs); font-weight: var(--fw-bold); color: #9a6a1e;
+  background: var(--pastel-yellow); padding: 2px var(--space-3); border-radius: var(--radius-pill);
+}
+.wk-card.is-today { box-shadow: 0 0 0 2px var(--color-primary), var(--shadow-md); }
+
+/* day area accents */
+.wk-card--english   { border-block-start-color: var(--color-primary); }
+.wk-card--english   .wk-card__area { background: var(--pastel-blue);     color: var(--color-primary-hover); }
+.wk-card--math      { border-block-start-color: var(--color-secondary); }
+.wk-card--math      .wk-card__area { background: var(--pastel-peach);    color: var(--color-secondary-hover); }
+.wk-card--urdu      { border-block-start-color: var(--color-success); }
+.wk-card--urdu      .wk-card__area { background: var(--pastel-mint);     color: #22603f; }
+.wk-card--practical { border-block-start-color: var(--color-accent); }
+.wk-card--practical .wk-card__area { background: var(--pastel-lavender); color: #3f2f74; }
+.wk-card--art       { border-block-start-color: var(--brand-pink); }
+.wk-card--art       .wk-card__area { background: var(--pastel-pink);     color: #8a2f3b; }
+
+/* FAQ */
+#faq { background: var(--surface-alt); padding-block-start: var(--space-5); }
+.faq { inline-size: 100%; max-inline-size: var(--content-narrow); margin-inline: auto; }
+.faq__head { text-align: center; }
+.faq__head .section-title, .faq__head .section-subtitle { text-align: center; }
+
+.faq__list { display: flex; flex-direction: column; gap: var(--space-3); }
+.faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; }
+.faq-item__h { margin: 0; }
+.faq-item__btn {
+  inline-size: 100%;
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-3);
+  text-align: start; font-family: inherit; font-weight: var(--fw-bold); font-size: var(--fs-md);
+  color: var(--text); background: transparent; border: 0; cursor: pointer;
+  padding: var(--space-4) var(--space-5);
+  transition: background var(--transition);
+}
+.faq-item__btn:hover { background: var(--bg-muted); }
+.faq-item__icon { flex: none; color: var(--color-primary); transition: transform var(--transition); }
+.faq-item__btn[aria-expanded="true"] .faq-item__icon { transform: rotate(180deg); }
+.faq-item__a { padding: 0 var(--space-5) var(--space-4); }
+.faq-item__a p { margin: 0; color: var(--text-muted); font-size: var(--fs-sm); line-height: var(--lh-base); }
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .wk__grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 640px) {
+  .wk__grid { grid-template-columns: 1fr; }
+  #weekly-plan { padding-block-end: var(--space-4); }
+  #faq { padding-block-start: var(--space-4); }
+}
 
 /* ---------- 15. Motion preferences ---------- */
 @media (prefers-reduced-motion: reduce) {

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap">
-  <link rel="stylesheet" href="style.css?v=18">
+  <link rel="stylesheet" href="style.css?v=21">
 </head>
 <body>
   <!-- Skip link for accessibility -->
@@ -370,7 +370,15 @@
     </section>
 
     <!-- Weekly plan -->
-    <section id="weekly-plan" aria-label="Weekly plan"></section>
+    <section id="weekly-plan" aria-label="Weekly learning plan">
+      <div class="wk">
+        <header class="wk__head">
+          <h2 class="section-title">Our Little Learning Journey</h2>
+          <p class="section-subtitle">A week full of fun, discovery, and learning.</p>
+        </header>
+        <div id="wk-grid" class="wk__grid" aria-live="polite"></div>
+      </div>
+    </section>
 
     <!-- Learning resources -->
     <section id="learning-resources" aria-label="Learning resources"></section>
@@ -382,7 +390,15 @@
     <section id="ai-assistant" aria-label="AI assistant"></section>
 
     <!-- FAQ -->
-    <section id="faq" aria-label="Frequently asked questions"></section>
+    <section id="faq" aria-label="Parent frequently asked questions">
+      <div class="faq">
+        <header class="faq__head">
+          <h2 class="section-title">Questions Parents Often Ask</h2>
+          <p class="section-subtitle">Quick answers to help make learning at home easier.</p>
+        </header>
+        <div id="faq-list" class="faq__list"></div>
+      </div>
+    </section>
   </main>
 
   <!-- Future teacher dashboard (placeholder, hidden until built) -->
@@ -391,6 +407,6 @@
   <!-- Site footer -->
   <footer id="footer" aria-label="Site footer"></footer>
 
-  <script src="script.js?v=18"></script>
+  <script src="script.js?v=21"></script>
 </body>
 </html>
