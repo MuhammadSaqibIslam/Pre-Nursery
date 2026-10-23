@@ -1398,6 +1398,66 @@ p  { margin-block: 0 var(--space-4); }
 @media (max-width: 900px) { .pc__grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .pc__grid { grid-template-columns: 1fr; } }
 
+/* ============================================================
+   Footer — Sunshine Sprouts Montessori
+   ============================================================ */
+#footer {
+  background: var(--surface-alt);
+  border-block-start: 1px solid var(--border);
+  padding-block: var(--space-7);
+}
+.ft { inline-size: 100%; max-inline-size: var(--content-wide); margin-inline: auto; }
+.ft__cols {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: var(--space-6);
+}
+
+.ft__logo {
+  display: inline-flex; align-items: center; justify-content: center;
+  inline-size: 44px; block-size: 44px; border-radius: var(--radius-pill);
+  background: radial-gradient(circle at 50% 45%, #fff3d6, #ffe6ad);
+  box-shadow: var(--shadow-sm);
+}
+.ft__name { margin-block: var(--space-2) var(--space-1); }
+.ft__name-1 { font-weight: var(--fw-heavy); color: var(--brand-charcoal); }
+.ft__name-2 { font-weight: var(--fw-bold); color: var(--brand-pink); }
+.ft__desc { font-size: var(--fs-sm); color: var(--text-muted); margin: 0; max-inline-size: 22rem; }
+
+.ft__title {
+  font-size: var(--fs-sm); font-weight: var(--fw-heavy);
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--text); margin-block: 0 var(--space-3);
+}
+.ft__links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.ft__links a {
+  text-decoration: none; color: var(--text-muted); font-size: var(--fs-sm);
+  border-radius: var(--radius-sm); transition: color var(--transition);
+}
+.ft__links a:hover, .ft__links a:focus-visible { color: var(--color-primary-hover); }
+
+.ft__contact { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.ft__contact li { display: flex; flex-direction: column; }
+.ft__contact-label { font-size: var(--fs-xs); font-weight: var(--fw-bold); color: var(--text); }
+.ft__ph { font-size: var(--fs-sm); color: var(--text-muted); font-style: italic; }
+
+.ft__divider { border: 0; border-block-start: 1px solid var(--border); margin-block: var(--space-6); }
+.ft__bottom {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: var(--space-2);
+}
+.ft__copy { margin: 0; font-size: var(--fs-sm); color: var(--text-muted); }
+.ft__tagline { margin: 0; font-size: var(--fs-sm); font-weight: var(--fw-bold); color: var(--brand-pink); }
+
+/* Responsive */
+@media (max-width: 860px) {
+  .ft__cols { grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+}
+@media (max-width: 520px) {
+  .ft__cols { grid-template-columns: 1fr; }
+  .ft__bottom { flex-direction: column; align-items: flex-start; }
+}
+
 /* ---------- 15. Motion preferences ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

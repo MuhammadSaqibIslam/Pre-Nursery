@@ -36,6 +36,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // ---- Phase 8: Parent Portal ----
   initParentPortal();
 
+  // ---- Footer: dynamic copyright year ----
+  var yearEl = document.getElementById("ft-year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
   var toggle = document.getElementById("nav-toggle");
   var menu = document.getElementById("nav-menu");
 
@@ -890,9 +894,10 @@ function initParentPortal() {
   }
   function onLoginKey(e) { if (e.key === "Escape") { e.preventDefault(); closeLogin(); } }
 
-  // navbar Parent Login is the single entry point to the login modal
-  var navLogin = document.querySelector(".nav__login");
-  if (navLogin) navLogin.addEventListener("click", function (e) { e.preventDefault(); openLogin(); });
+  // navbar Parent Login + footer Parent Login / Ask the Teacher open the modal
+  document.querySelectorAll(".nav__login, [data-open-login]").forEach(function (el) {
+    el.addEventListener("click", function (e) { e.preventDefault(); openLogin(); });
+  });
   modal.addEventListener("click", function (e) { if (e.target.closest("[data-close]")) closeLogin(); });
 
   // password show/hide

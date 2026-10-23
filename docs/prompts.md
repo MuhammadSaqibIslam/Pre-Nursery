@@ -479,3 +479,31 @@ HTML/CSS/vanilla JS; no framework; no real auth/db/secure child-linking this pha
 Login validation; password toggle; dashboard renders; sample child/homework clearly demo; question form validation; conversation statuses + empty states; resource links only when valid; responsive; existing intact; no misleading auth/privacy claims.
 
 Complete Phase 8 only. Do not proceed to Phase 9 automatically. Summarize files, functionality, tests, remaining limitations. Wait for approval.
+
+---
+
+# Prompt 12b (Phase 8 Correction)
+
+Remove the unnecessary standalone "Parent Portal" landing section (big heading, subtitle, sign-in card, demo disclaimer, extra Parent Login button). Don't replace with another large intro. Navbar Parent Login = single entry point → compact login modal (email, password, show/hide, Forgot Password, Sign In). After sign-in go straight to dashboard. Keep private child info/attendance/progress/conversations behind auth; public classwork/homework/activities/announcements stay public. No fake auth; mark demo. One predictable Parent Login behavior, no duplicate login screens. Reuse components; remove redundant section + spacing; preserve homepage/features. Complete only this correction.
+
+---
+
+# Prompt 13
+
+# Footer Section — Sunshine Sprouts Montessori
+
+Implement ONLY the footer after the FAQ. Clean colorful footer consistent with the site (warm cream/pastel bg, existing type/color vars, balanced spacing, responsive columns desktop / stacked mobile, subtle Montessori decorative elements, no clutter).
+
+Layout:
+- Col 1 Brand: sunflower logo, "Sunshine Sprouts Montessori", desc "A happy little space where children learn, explore, and grow every day."
+- Col 2 Quick Links: Home, Daily Classwork, Homework, Activities, Weekly Learning Plan → existing section IDs.
+- Col 3 Parent Help: Announcements, Questions Parents Often Ask, Ask the Teacher, Parent Login → existing sections / login interaction; no duplicate pages.
+- Col 4 Contact: teacher/email/class-timings placeholders. Don't invent real details; clearly-labelled placeholders.
+
+Bottom bar: subtle divider, dynamic copyright year (JS), "Sunshine Sprouts Montessori. All rights reserved.", closing "Little steps, big discoveries!"
+
+Functional: all nav links work; email/tel links active only when valid details configured; no dead/placeholder URLs; semantic + accessible labels; keyboard usable; no social links unless real URLs. Responsive 4→2→1; no overflow. Reuse design system; place after FAQ; preserve all; don't redesign navbar/hero/FAQ/others; no AI chat/backend; no framework.
+
+Testing: footer after FAQ; internal links to existing IDs; year auto-updates; desktop/tablet/mobile; nothing broken; no placeholder links/invented contacts.
+
+Complete only this footer. Do not proceed to another phase. Summarize changes, wait for approval.

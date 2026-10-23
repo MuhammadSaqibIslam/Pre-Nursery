@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap">
-  <link rel="stylesheet" href="style.css?v=23">
+  <link rel="stylesheet" href="style.css?v=24">
 </head>
 <body>
   <!-- Skip link for accessibility -->
@@ -494,8 +494,71 @@
   <section id="teacher-dashboard" aria-label="Teacher dashboard" hidden></section>
 
   <!-- Site footer -->
-  <footer id="footer" aria-label="Site footer"></footer>
+  <footer id="footer" aria-label="Site footer">
+    <div class="ft">
+      <div class="ft__cols">
+        <!-- Brand -->
+        <div class="ft__brand">
+          <span class="ft__logo" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+              <g fill="#f4b740">
+                <ellipse cx="24" cy="8"  rx="4.5" ry="8"/><ellipse cx="24" cy="40" rx="4.5" ry="8"/>
+                <ellipse cx="8"  cy="24" rx="8" ry="4.5"/><ellipse cx="40" cy="24" rx="8" ry="4.5"/>
+                <ellipse cx="12.7" cy="12.7" rx="7" ry="4.5" transform="rotate(45 12.7 12.7)"/>
+                <ellipse cx="35.3" cy="12.7" rx="7" ry="4.5" transform="rotate(-45 35.3 12.7)"/>
+                <ellipse cx="12.7" cy="35.3" rx="7" ry="4.5" transform="rotate(-45 12.7 35.3)"/>
+                <ellipse cx="35.3" cy="35.3" rx="7" ry="4.5" transform="rotate(45 35.3 35.3)"/>
+              </g>
+              <circle cx="24" cy="24" r="8.5" fill="#8a5a2b"/>
+            </svg>
+          </span>
+          <p class="ft__name"><span class="ft__name-1">Sunshine Sprouts</span> <span class="ft__name-2">Montessori</span></p>
+          <p class="ft__desc">A happy little space where children learn, explore, and grow every day.</p>
+        </div>
 
-  <script src="script.js?v=23"></script>
+        <!-- Quick Links -->
+        <nav class="ft__col" aria-label="Quick links">
+          <h3 class="ft__title">Quick Links</h3>
+          <ul class="ft__links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#classwork-homework">Daily Classwork</a></li>
+            <li><a href="#classwork-homework">Homework</a></li>
+            <li><a href="#activities-gallery">Activities</a></li>
+            <li><a href="#weekly-plan">Weekly Learning Plan</a></li>
+          </ul>
+        </nav>
+
+        <!-- Parent Help -->
+        <nav class="ft__col" aria-label="Parent help">
+          <h3 class="ft__title">Parent Help</h3>
+          <ul class="ft__links">
+            <li><a href="#announcements">Announcements</a></li>
+            <li><a href="#faq">Questions Parents Often Ask</a></li>
+            <li><a href="#login-modal" data-open-login>Ask the Teacher</a></li>
+            <li><a href="#login-modal" data-open-login>Parent Login</a></li>
+          </ul>
+        </nav>
+
+        <!-- Contact (placeholders — no invented details) -->
+        <div class="ft__col">
+          <h3 class="ft__title">Contact</h3>
+          <ul class="ft__contact">
+            <li><span class="ft__contact-label">Teacher</span><span class="ft__ph">To be provided</span></li>
+            <li><span class="ft__contact-label">Email</span><span class="ft__ph">To be provided</span></li>
+            <li><span class="ft__contact-label">Class timings</span><span class="ft__ph">To be provided</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="ft__divider">
+
+      <div class="ft__bottom">
+        <p class="ft__copy">&copy; <span id="ft-year">2026</span> Sunshine Sprouts Montessori. All rights reserved.</p>
+        <p class="ft__tagline">Little steps, big discoveries! 🌻</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js?v=24"></script>
 </body>
 </html>
